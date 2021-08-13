@@ -1,0 +1,20 @@
+- name: Creating...
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Create a directory for storing software
+      win_shell: mkdir C:\ansible_soft -Force
+
+########################################################################
+
+- name: Copy File
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Copy file
+      win_copy:
+        src: /root/ansible-playbook/testFile
+        dest: C:\ansible_soft\
