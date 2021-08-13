@@ -1,0 +1,21 @@
+---
+- name: Windows command
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+   - name: Get disk facts
+     win_command: wmic cpu get caption, deviceid, name, numberofcores, maxclockspeed, status
+     register: usage
+
+   - debug: msg="{{ usage.stdout }}"
+
+   - name: run an executable using win_command
+     win_command: whoami.exe
+     register: who
+
+   - debug: msg="{{ who.stdout }}"
+
+   - name: run a cmd command
+     win_command: cmd.exe /c mkdir C:\test

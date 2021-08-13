@@ -1,0 +1,11 @@
+---
+- name: Restart a service
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+  - name: Restart a service
+    win_service:
+      name: sshd
+      state: restarted

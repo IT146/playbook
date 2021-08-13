@@ -1,0 +1,18 @@
+---
+# Переменная для загрузки установочного файла с http ресурса
+#source_url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.2/npp.8.1.2.Installer.x64.exe
+
+# Переменная указывает куда сохранить загрузочный файл на целевой системе
+#source_dest: C:\ansible_soft\npp.8.1.2.Installer.x64.exe
+
+# Переменная указывает на установочный файл находящийся на управляющем узле
+#source_file: /root/ansible-playbook/npp.8.1.2.Installer.x64.exe
+
+#источник файла на ftp севере
+#source_ftp: ftp://192.168.15.2/soft/npp.8.1.2.Installer.x64.exe
+#ftp_user: itsupport
+#ftp_password: RvhBmpodjf
+
+
+source_dest: C:\ansible_soft\Far30b5800.x64.20210519.msi
+source_file: /root/ansible-playbook/Far30b5800.x64.20210519.msi

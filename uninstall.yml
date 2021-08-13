@@ -1,0 +1,17 @@
+---
+- name: UnInstalling ...
+  hosts: all
+  gather_facts: false
+
+  vars_files:
+    - /root/ansible-playbook/uninstall_vars.yml
+
+  tasks:
+    - name: UnInstall "{{ software_name }}"
+
+# Удалим ПО, успешно удаляет msi пакеты
+      win_package:
+        path: "{{ source_dest }}"
+#        chdir: 'C:\Program Files\Far Manager'
+        state: absent
+        log_path: C:\ansible_soft\uninstall-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log

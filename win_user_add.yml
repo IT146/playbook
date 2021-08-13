@@ -1,0 +1,29 @@
+---
+- name: Create user account
+  hosts: all
+  gather_facts: false
+
+  vars:
+    - user_name: bobman
+    - new_pass: 'Bon&65FCV,LO[pojnBZaQ@#bgHnm'
+
+  tasks:
+  - name: Ensure user "{{ user_name }}" is present
+
+    win_user:
+      name: "{{ user_name }}"
+      password: "{{ new_pass }}"
+      state: present
+
+#      account_disabled: no
+#      account_locked: no
+#      fullname: Name Name
+#      description: account for manage server
+#      password_expired: no
+#      password_never_expires: no
+#      user_cannot_change_password: no
+
+      groups:
+        - Пользователи
+        - Администраторы
+        - Пользователи удаленного рабочего стола

@@ -1,0 +1,52 @@
+---
+- name: Install updates
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+
+#  - name: Install all security, critical, and rollup updates without a scheduled task
+#    win_updates:
+#      category_names:
+#        - SecurityUpdates
+#        - CriticalUpdates
+#        - UpdateRollups
+#      reboot: yes
+
+
+# Ищет обновления в категории SecurityUpdates, результат записывает в файл C:\ansible_wu.txt
+  - name: Search-only, return list of found updates (if any), log to C:\ansible_wu.txt
+    win_updates:
+      category_names: SecurityUpdates
+      state: searched
+      log_path: C:\ansible_wu_search.txt
+
+#  - name: Install only particular updates based on the KB numbers
+#    win_updates:
+#      category_names:
+#      - SecurityUpdates
+#      accept_list:
+#      - KB2267602
+#      - KB4589208
+#      - KB5004414
+#      state: downloaded
+#      log_path: C:\ansible_wu_downloaded.txt
+
+
+#  - name: Install only particular updates based on the KB numbers
+#    win_updates:
+#      category_names:
+#      - SecurityUpdates
+#      accept_list:
+#      - KB2267602
+#      state: installed
+
+#  - name: Install all security, critical, and rollup updates without a scheduled task
+#    win_updates:
+#      category_names:
+#      - SecurityUpdates
+#      - CriticalUpdates
+#      - UpdateRollups
+#      state: installed
+#      log_path: C:\ansible_wu_inst.txt

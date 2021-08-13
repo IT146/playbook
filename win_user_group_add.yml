@@ -1,0 +1,19 @@
+---
+- name: Add user to group
+  hosts: all
+  gather_facts: false
+
+  vars:
+    - user_name: bobman
+    - groups_name:
+        - Пользователи
+        - Администраторы
+
+
+  tasks:
+  - name: Add user to a local group
+
+    win_user:
+      name: "{{ user_name }}"
+      groups: "{{ groups_name }}"
+      groups_action: add

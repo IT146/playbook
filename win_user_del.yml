@@ -1,0 +1,14 @@
+---
+- name: Delete user account
+  hosts: all
+  gather_facts: false
+
+  vars:
+    - user_name: bobman
+
+  tasks:
+
+  - name: Ensure user "{{ user_name }}" is absent
+    win_user:
+      name: "{{ user_name }}"
+      state: absent

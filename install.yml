@@ -1,0 +1,53 @@
+---
+- name: Install software
+  hosts: all
+  gather_facts: false
+
+# Получим переменные из файла
+  vars_files:
+    - /root/ansible-playbook/install_vars.yml
+
+  tasks:
+
+# Создадим каталог для хранения софта
+    - name: Create a directory for storing software
+      win_shell: mkdir C:\ansible_soft -Force
+
+
+    - name: Copy file to "{{ source_dest }}"
+
+# Копирует файл из локального каталога
+      win_copy:
+        src: "{{ source_file }}"
+        dest: "{{ source_dest }}"
+
+# Копирует файл по http/https ссылке
+#      win_get_url:
+#        url: "{{ source_url }}"
+#        dest: "{{ source_dest }}"
+
+# Копирует файл по ftp
+#      win_get_url:
+#        url: "{{ source_ftp }}"
+#        dest: "{{ source_dest }}"
+#        url_username: "{{ ftp_user }}"
+#        url_password: "{{ ftp_password }}"
+#        log_path: C:\ansible_soft\install-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+
+
+# Установим ПО
+#    - name: Install "{{ source_dest }}"
+#      win_package:
+#        path: "{{ source_dest }}"
+#        arguments: /S
+##        product_id: Notepad++
+#        state: present
+#        log_path: C:\ansible_soft\install-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+
+
+# Установим ПО
+    - name: Install "{{ source_dest }}"
+      win_package:
+        path: "{{ source_dest }}"
+        state: present
+        log_path: C:\ansible_soft\install-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log

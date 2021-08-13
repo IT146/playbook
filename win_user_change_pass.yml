@@ -1,0 +1,14 @@
+---
+- name: Change user password
+  hosts: all
+  gather_facts: false
+
+  vars:
+    - user_name: bobman
+    - new_pass: 'Capec*7hgV-New_jdhey-Password'
+
+  tasks:
+  - name: Change password
+    win_user:
+      name: "{{ user_name}}"
+      password: "{{ new_pass }}"

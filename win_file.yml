@@ -1,0 +1,12 @@
+---
+- name: Create dir
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+  - name: Create directory structure
+
+    win_file:
+      path: c:\1\2\3
+      state: directory

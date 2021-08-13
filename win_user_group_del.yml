@@ -1,0 +1,19 @@
+---
+- name: Delete user from group
+  hosts: all
+  gather_facts: false
+
+  vars:
+    - user_name: bobman
+    - groups_name:
+        - Пользователи
+        - Администраторы
+
+
+  tasks:
+  - name: Remove user from a local group
+
+    win_user:
+      name: "{{ user_name }}"
+      groups: "{{ groups_name }}"
+      groups_action: remove
