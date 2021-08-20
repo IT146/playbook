@@ -1,0 +1,20 @@
+---
+- name: Reset RDP Session
+  hosts: all
+  gather_facts: false
+
+  tasks:
+# Получим список сессий
+    - name: query session
+      win_shell: qwinsta
+      ignore_errors: true
+      register: qr
+
+    - name: query output
+      debug:
+        var: qr.stdout
+
+
+- name: Get session number and reset
+  hosts: all
+  gather_facts: false
